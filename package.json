@@ -1,0 +1,14 @@
+{
+  "name": "twilio-burner",
+  "version": "1.0.0",
+  "description": "Server forwarding text messages received on a twilio number to a real one.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicolas de Thore",
+  "license": "ISC",
+  "dependencies": {
+    "twilio": "^3.6.1"
+  }
+}
