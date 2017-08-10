@@ -1,14 +1,21 @@
 {
-  "name": "twilio-burner",
+  "name": "burner",
   "version": "1.0.0",
-  "description": "Server forwarding text messages received on a twilio number to a real one.",
+  "description": "REST api for managing burner phones numbers online.",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "scripts": {
+        "dev": "nodemon server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nicolas de Thore",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.15.4",
+    "minimist": "^1.2.0",
+    "mongodb": "^2.2.31",
     "twilio": "^3.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
