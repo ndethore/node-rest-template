@@ -1,7 +1,7 @@
 {
   "name": "burner",
   "version": "1.0.0",
-  "description": "REST api for managing burner phones numbers online.",
+  "description": "REST api for buying and managing burner phones numbers online.",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
@@ -13,7 +13,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "minimist": "^1.2.0",
-    "mongodb": "^2.2.31",
+    "mongoose": "^4.11.6",
     "twilio": "^3.6.1"
   },
   "devDependencies": {

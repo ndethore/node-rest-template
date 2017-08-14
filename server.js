@@ -4,7 +4,7 @@ const config          = require('./config');
 const argv            = require('minimist')(process.argv.slice(2));
 const express         = require('express');
 const bodyParser      = require('body-parser');
-const mongo_client    = require('mongodb').MongoClient;
+const mongoose        = require('mongoose');
 const twilio_client   = require('twilio')(config.account.sid, config.account.auth_token);
 
 const app = express();
