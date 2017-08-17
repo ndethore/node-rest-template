@@ -1,16 +1,13 @@
 #!/usr/bin/env node
 
-const config          = require('./config');
 const argv            = require('minimist')(process.argv.slice(2));
-const express         = require('express');
-const bodyParser      = require('body-parser');
+const app             = require('express')();
+const config          = require('./config/main');
+const router          = require('./router')
 const mongoose        = require('mongoose');
-const twilio_client   = require('twilio')(config.account.sid, config.account.auth_token);
-
-const app = express();
-const port = 8000;
-
-
+const bodyParser      = require('body-parser');
+const logger          = require('morgan');
+//const twilio_client   = require('twilio')(config.account.sid, config.account.auth_token);
 
 if (argv.h || argv.help) {
     console.log([
@@ -25,8 +22,25 @@ if (argv.h || argv.help) {
     process.exit(0);
 }
 
-app.use(bodyParser.json());
-require('./routes')(app, {});
-app.listen(port, () => {
-    console.log('Listening on port: ' + port);
-});
+
+// Database Setup
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/burner', {useMongoClient: true})
+    .then(() =>  {
+ 
+        // Setting up basic middleware for all Express requests
+        app.use(bodyParser.json());
+        app.use(bodyParser.urlencoded({ extended: false }));
+        app.use(logger('dev'));
+
+        // Import routes to be served
+        router(app); //require('./routes')(app, {});
+
+        // Start server
+        app.listen(config.port, () => {
+            console.log(`Listening on port: ${config.port}`);
+        });
+
+    })
+    .catch((err) => console.error(err));
+
