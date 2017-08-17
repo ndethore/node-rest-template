@@ -1,7 +1,7 @@
 {
-  "name": "burner",
+  "name": "node-rest-template",
   "version": "1.0.0",
-  "description": "REST api for buying and managing burner phones numbers online.",
+  "description": "Starting point for building node based REST apis",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
@@ -18,8 +18,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^4.1.0",
-    "twilio": "^3.6.1"
+    "passport-local-mongoose": "^4.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

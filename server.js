@@ -7,7 +7,6 @@ const router          = require('./router')
 const mongoose        = require('mongoose');
 const bodyParser      = require('body-parser');
 const logger          = require('morgan');
-//const twilio_client   = require('twilio')(config.account.sid, config.account.auth_token);
 
 if (argv.h || argv.help) {
     console.log([
@@ -27,7 +26,7 @@ if (argv.h || argv.help) {
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/burner', {useMongoClient: true})
     .then(() =>  {
- 
+
         // Setting up basic middleware for all Express requests
         app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({ extended: false }));
