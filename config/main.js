@@ -1,5 +1,6 @@
 var config = {};
 config.port = 8000;
+config.secret = 'burner.200sigma.com';
 
 config.twilio = {};
 config.twilio.sid = 'ACc4edeee4e1a5d7749c371b4dbf221494';
