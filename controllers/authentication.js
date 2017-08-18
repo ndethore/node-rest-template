@@ -10,10 +10,10 @@ function generateToken(payload) {
 
 exports.register = function(req, res) {
 
-    console.log("[+] Registering user " + req.body.username + "...");
+    console.log("[+] Registering user " + req.body.email + "...");
     console.log("Body: " + req.body.password);
 
-    const user = new User({ username : req.body.username });
+    const user = new User({ email: req.body.email});
     User.register(user, req.body.password, function(err, account) {
 
         if (err) {
@@ -24,8 +24,10 @@ exports.register = function(req, res) {
         // mailchimp.subscribeToNewsletter(user.email);
 
         var payload = {
-          '_id': user._id,
-          'username': user.username
+          '_id':        user._id,
+          'email':      user.email,
+          'firstName':  user.firstName,
+          'lastName':    user.lastName
         };
         // Respond with JWT if user was created
         return res.status(201).json({
@@ -39,8 +41,10 @@ exports.register = function(req, res) {
 
 exports.login = function(req, res) {
     var payload = {
-      '_id': req.user._id,
-      'username': req.user.username
+      '_id':        req.user._id,
+      'email':      req.user.email,
+      'firstName':  req.user.firstName,
+      'lastName':   req.user.lastName
     };
 
     return res.status(201).json({
