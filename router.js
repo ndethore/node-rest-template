@@ -26,7 +26,10 @@ module.exports = function (app) {
     // Set login route
     authRoutes.post('/login', requireLogin, AuthenticationController.login);
 
-
+    // Example of token protected endpoint
+    authRoutes.post('/secret', requireAuth, function (req, res) {
+      res.send('authorized');
+    });
 
     // Set url for API group routes
     app.use('/api', apiRoutes);
