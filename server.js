@@ -36,10 +36,9 @@ mongoose.connect('mongodb://localhost/burner', {useMongoClient: true})
         router(app); //require('./routes')(app, {});
 
         // Start server
-        app.listen(config.port, () => {
+        app.listen((config.port || 8000), () => {
             console.log(`Listening on port: ${config.port}`);
         });
 
     })
     .catch((err) => console.error(err));
-

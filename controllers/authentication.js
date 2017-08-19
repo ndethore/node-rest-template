@@ -4,7 +4,7 @@ var User = require('../models/user');
 
 
 function generateToken(payload) {
-  return jwt.sign(payload, config.secret, { expiresIn: '7d' });
+  return jwt.sign(payload, (config.secret || 'secret'), { expiresIn: '7d' });
 
 }
 
